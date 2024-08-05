@@ -29,6 +29,7 @@ body {
   display: grid;
   place-content: center;
   gap: 2rem;
+  user-select: none;
 }
 
 .logo {
@@ -144,24 +145,31 @@ button#pwa-refresh {
   outline: 0.3rem solid blueviolet;
   border-radius: 3rem;
   padding: 1rem;
-  transition: outline-color 250ms ease;
+  transition: all 250ms ease;
 }
 
 .field {
   --bg-color: blueviolet;
   background-color: var(--bg-color);
   border-radius: 50%;
+  clip-path: circle(50%);
   cursor: pointer;
-  transition: background-color 200ms ease;
-  user-select: none;
+  transition: all 400ms ease-in-out;
 }
 
-.field:hover {
-  background-color: oklch(from var(--bg-color) calc(l * 0.7) c h);
+@media (hover: hover) {
+  .field:hover {
+    background-color: oklch(from var(--bg-color) calc(l * 0.7) c h);
+  }
+}
+
+.field:active {
+  background-color: oklch(from var(--bg-color) calc(l * 1.05) c h);
 }
 
 .field--swapped {
   --bg-color: teal;
+  transform: rotateY(0.5turn);
 }
 
 h1 {
